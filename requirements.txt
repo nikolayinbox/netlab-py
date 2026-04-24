@@ -1,0 +1,7 @@
+flask
+flask-cors
+pyyaml
+telnetlib3
+paramiko
+redis
+requests

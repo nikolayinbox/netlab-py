@@ -1,0 +1,34 @@
+lab_id: "8d711e1f-7d99-4a90-a6c3-d98daf8d98f6"
+total_points: 100
+criteria:
+  - section: "Базовая настройка"
+    description: "На R2 настроен hostname R2"
+    device: "R2"
+    command: "show running-config | include hostname"
+    match_type: "include"      # include / exclude / regex
+    pattern: "hostname R2"
+    points: 10
+
+  - section: "Маршрутизация"
+    description: "На R2 присутствует маршрут к сети 10.0.0.0/24"
+    device: "R2"
+    command: "show ip route"
+    match_type: "include"
+    pattern: "10.0.0.0/24"
+    points: 20
+
+  - section: "Безопасность"
+    description: "На R2 не должно быть telnet доступа"
+    device: "R2"
+    command: "show running-config | include transport input"
+    match_type: "exclude"
+    pattern: "telnet"
+    points: 15
+
+  - section: "Linux"
+    description: "Проверка наличия файла /home/user/test.txt"
+    device: "Linux"
+    command: "ls /home/user/"
+    match_type: "include"
+    pattern: "test.txt"
+    points: 25
